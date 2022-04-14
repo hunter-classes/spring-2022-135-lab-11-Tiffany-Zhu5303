@@ -2,6 +2,11 @@
 
 #include "profile.h"
 
+Profile::Profile(){
+  username = "";
+  displayname = "";
+}
+
 Profile::Profile(std::string usrn, std::string dspn){
   username = usrn;
   displayname = dspn;

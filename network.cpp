@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cctype>
+#include <string>
 
 #include "network.h"
 #include "profile.h"
@@ -30,7 +31,7 @@ bool Network::addUser(std::string usrn, std::string dspn){
     }
   }
 
-  if(numUsers > MAX_USERS){
+  if(numUsers >= MAX_USERS){
     return false;
   }else if(findID(usrn) != -1){
     return false;
@@ -38,7 +39,7 @@ bool Network::addUser(std::string usrn, std::string dspn){
 
   Profile newUser(usrn,dspn);
   profiles[numUsers] = newUser;
-  numUsers ++;
+  numUsers = numUsers + 1;
 
   return true;
 }
