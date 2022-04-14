@@ -23,3 +23,15 @@ TEST_CASE("added to network"){
 
   CHECK(network.addUser("halloooo", "random") == 0);
 }
+
+TEST_CASE("friends"){
+  Network network;
+  network.addUser("tiff", "any");
+  network.addUser("El", "ton");
+
+  CHECK(network.follow("tiff", "El") == true);
+  CHECK(network.follow("tiff@ny", "tiff") == false);
+  CHECK(network.follow("spy", "el") == false);
+  CHECK(network.follow("daedalus", "tiffany") == false);
+}
+  
