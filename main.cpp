@@ -30,11 +30,32 @@ int main(){
   std::cout << "mario 2: " << nw.addUser("mario 2", "Mario2") << std::endl;  // false (0)
   std::cout << "mario-2: " << nw.addUser("mario-2", "Mario2") << std::endl;  // false (0)
 
-  for(int i = 2; i < 20; i++){
-    std::cout << "mario " << std::to_string(i) << ": " << nw.addUser("mario" + std::to_string(i), "Mario" + std::to_string(i)) << std::endl;   // true (1)
+  for(int i = 2; i < 19; i++){
+    std::cout << "mario" << std::to_string(i) << ": " << nw.addUser("mario" + std::to_string(i), "Mario" + std::to_string(i)) << std::endl;   // true (1)
   }
 
-  std::cout << "yoshi: " << nw.addUser("yoshi", "Yoshi") << std::endl;     // false (0)
+  std::cout << "yoshi: " << nw.addUser("yoshi", "Yoshi") << std::endl;     // true (1)
+  std::cout << "mario19: " << nw.addUser("mario19", "Mario19") << std::endl; // false(0)
+
+  std::cout << "\n--------------Task C------------------" << std::endl;
+  //mario, luigi, and yoshi are all following each other
+  nw.follow("mario", "luigi");
+  nw.follow("mario", "yoshi");
+  nw.follow("luigi", "mario");
+  nw.follow("luigi", "yoshi");
+  nw.follow("yoshi", "mario");
+  nw.follow("yoshi", "luigi");
+
+  //mario has fake followers
+  for(int i = 2; i < 6; i++){
+    nw.follow("mario" + std::to_string(i), "mario");
+  }
+
+  nw.follow("mario2", "luigi");
+
+  std::cout << "The code below, outputted in the terminal, is for the Online Graphviz app. Input the code on https://dreampuf.github.io/GraphvizOnline/\n" << std::endl;
+
+  nw.printDot();
 
   return 0;
 }
